@@ -1,0 +1,10 @@
+.section{
+  width: 230px;
+  height: 315px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 25px;
+  background-color: #1a1a1a;
+}

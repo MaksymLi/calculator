@@ -1,0 +1,13 @@
+.section{
+  width: 365px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  background-color: #1a1a1a;
+  border-radius: 0 0 50px 50px;
+}
