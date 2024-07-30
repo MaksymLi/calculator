@@ -2,33 +2,33 @@ import styles from '/src/Components/CalculatorKeyboardRight/CalculatorKeyboardRi
 import Button from "/src/Components/Button/Button"
 
 export default function CalculatorKeyboardRight(){
-  const rightButtons = [
+  const buttons = [
     {
-      id: 'divide',
+      id: '/',
       content: '/images/divide.svg'
     },
     {
-      id: 'times',
+      id: '*',
       content: '/images/times.svg'
     },
     {
-      id: 'minus',
+      id: '-',
       content: '/images/minus.svg'
     },
     {
-      id: 'plus',
+      id: '+',
       content: '/images/plus.svg'
     },
     {
-      id: 'equals',
+      id: '=',
       content: '/images/equals.svg'
     }
   ]
-  const rButtons = rightButtons.map(rightButton => <Button key={rightButton.id}><img src={rightButton.content} /></Button>)
+  const ulbuttons = buttons.map(button => <Button key={button.id}><img src={button.content} /></Button>)
 
   return(
     <section className={styles.section}>
-      {rButtons}
+      {ulbuttons}
     </section>
   )
 }

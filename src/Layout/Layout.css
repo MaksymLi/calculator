@@ -1,0 +1,30 @@
+main{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 375px;
+  height: 800px;
+  background-color: #1a1a1a;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 325px;
+  height: 20px;
+}
+header>a{
+  display: flex;
+  color: #CDCDCD;
+  line-height: 20px;
+  font-size: 14px;
+  transition: 0.3s;
+  text-decoration: underline 2px rgba(0, 0, 0, 0);
+  text-underline-offset: 5px;
+}
+.active{
+  color: #F63356;
+  text-decoration: underline 2px #F63356;
+}

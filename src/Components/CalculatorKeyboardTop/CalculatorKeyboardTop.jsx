@@ -2,13 +2,13 @@ import styles from '/src/Components/CalculatorKeyboardTop/CalculatorKeyboardTop.
 import Button from "/src/Components/Button/Button"
 
 export default function CalculatorKeyboardTop(){
-  const topButtons = [
+  const buttons = [
     {
       id: 'clear',
       content: 'C'
     },
     {
-      id: 'percent',
+      id: '%',
       content: '%'
     },
     {
@@ -16,13 +16,13 @@ export default function CalculatorKeyboardTop(){
       content: '/public/images/backspace.svg'
     }
   ]
-  const tButtons = topButtons.map(topButton => <Button key={topButton.id}>
-    {topButton.id !== 'backspace' ? topButton.content : <img src='/images/backspace.svg' />}
+  const ulbuttons = buttons.map(button => <Button key={button.id}>
+    {button.id !== 'backspace' ? button.content : <img src='/images/backspace.svg' />}
   </Button>)
 
   return(
     <section className={styles.section}>
-      {tButtons}
+      {ulbuttons}
     </section>
   )
 }
