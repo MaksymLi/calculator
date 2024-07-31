@@ -3,14 +3,13 @@ import CalculatorKeyboardRight from "/src/Components/CalculatorKeyboardRight/Cal
 import CalculatorKeyboardTop from "/src/Components/CalculatorKeyboardTop/CalculatorKeyboardTop";
 import MainKeyboard from "/src/Components/MainKeyboard/MainKeyboard";
 
-export default function CalculatorKeyboard() {
-
+export default function CalculatorKeyboard({ handleButtonClick }) {
   return (
     <>
       <section className={styles.section}>
-        <CalculatorKeyboardTop />
-        <MainKeyboard />
-        <CalculatorKeyboardRight />
+        <CalculatorKeyboardTop handleButtonClick={handleButtonClick} />
+        <MainKeyboard handleButtonClick={handleButtonClick} />
+        <CalculatorKeyboardRight handleButtonClick={handleButtonClick} />
       </section>
     </>
   )

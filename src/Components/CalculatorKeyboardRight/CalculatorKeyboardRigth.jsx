@@ -1,7 +1,7 @@
 import styles from '/src/Components/CalculatorKeyboardRight/CalculatorKeyboardRight.module.css'
 import Button from "/src/Components/Button/Button"
 
-export default function CalculatorKeyboardRight(){
+export default function CalculatorKeyboardRight({ handleButtonClick }){
   const buttons = [
     {
       id: '/',
@@ -24,7 +24,7 @@ export default function CalculatorKeyboardRight(){
       content: '/images/equals.svg'
     }
   ]
-  const ulbuttons = buttons.map(button => <Button key={button.id}><img src={button.content} /></Button>)
+  const ulbuttons = buttons.map(button => <Button key={button.id} buttonId={button.id} handleButtonClick={handleButtonClick}><img src={button.content} /></Button>)
 
   return(
     <section className={styles.section}>

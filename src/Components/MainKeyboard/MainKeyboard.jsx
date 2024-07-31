@@ -1,7 +1,7 @@
 import styles from '/src/Components/MainKeyboard/MainKeyboard.module.css'
 import Button from "/src/Components/Button/Button"
 
-export default function MainKeyboard(){
+export default function MainKeyboard({ handleButtonClick }){
   const buttons = [
     {
       id: '7',
@@ -40,20 +40,20 @@ export default function MainKeyboard(){
       content: '3'
     },
     {
-      id: '7',
+      id: '00',
       content: '00'
     },
     {
-      id: '7',
+      id: '0',
       content: '0'
     },
     {
-      id: '7',
+      id: '.',
       content: '.'
     },
   ]
-  const ulButtons = buttons.map(button => <Button key={button.id}>{button.content}</Button>)
-
+  const ulButtons = buttons.map(button => <Button key={button.id} buttonId={button.id} handleButtonClick={handleButtonClick}>{button.content}</Button>)
+  
   return(
     <section className={styles.section}>
       {ulButtons}
