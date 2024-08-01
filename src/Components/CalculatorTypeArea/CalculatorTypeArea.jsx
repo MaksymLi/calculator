@@ -1,6 +1,6 @@
 import styles from '/src/Components/CalculatorTypeArea/CalculatorTypeArea.module.css'
 
-export default function CalculatorTypeArea ({ textareaValue, handleKeyDown }){
+export default function CalculatorTypeArea ({ textareaValue, handleKeyDown, textareaRef }){
   return(
     <section className={styles.section}>
       <textarea 
@@ -9,6 +9,8 @@ export default function CalculatorTypeArea ({ textareaValue, handleKeyDown }){
         value={textareaValue}
         onKeyDown={event => handleKeyDown(event.key)}
         readOnly
+        autoFocus
+        ref={textareaRef}
       />
     </section>
   )

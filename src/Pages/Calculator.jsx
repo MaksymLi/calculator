@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import CalculatorTypeArea from '/src/Components/CalculatorTypeArea/CalculatorTypeArea'
 import CalculatorKeyboard from '/src/Components/CalculatorKeyboard/CalculatorKeyboard'
 
 export default function Calculator(){
   const [textareaValue, setTextareaValue] = useState('')
   const [parenthesesOpen, setParenthesesOpen] = useState(0)
+  const textareaRef = useRef()
 
   function handleKeyDown(e){
     switch(e){
@@ -131,26 +132,27 @@ export default function Calculator(){
       case '()':
         setTextareaValue(prev => {
           if(parenthesesOpen > 0){
-            if(!isNaN(textareaValue[prev.length - 1] || textareaValue[prev.length - 1] == ')')){
+            if(!isNaN(textareaValue[prev.length - 1]) || textareaValue[prev.length - 1] == ')'){
               setParenthesesOpen(prev => prev - 1)
+              console.log('open number or )')
               return prev + ')'
-            }
-            else{
+            }else{
               setParenthesesOpen(prev => prev + 1)
+              console.log('open sign')
               return prev + '('
             }
-          }
-          else{
+          }else{
             if(!isNaN(textareaValue[prev.length - 1])){
               setParenthesesOpen(prev => prev + 1)
+              console.log('closed number')
               return prev + '×('
-            }
-            else if(textareaValue[prev.length - 1] == ')'){
+            }else if(textareaValue[prev.length - 1] == ')'){
               setParenthesesOpen(prev => prev + 1)
+              console.log('closed )')
               return prev + '×('
-            }
-            else{
+            }else{
               setParenthesesOpen(prev => prev + 1)
+              console.log('closed sign')
               return prev + '('
             }
           }
@@ -191,6 +193,7 @@ export default function Calculator(){
         setTextareaValue('')
         break
     }
+    textareaRef.current.focus()
   }
 
   function evaluateExpression(expression){
@@ -200,6 +203,9 @@ export default function Calculator(){
     }
     catch{
       return errorFunction()
+    }
+    finally{
+      textareaRef.current.focus()
     }
   }
   
@@ -267,10 +273,11 @@ export default function Calculator(){
     setTimeout(() => {
       setTextareaValue('')
     }, timeoutSec*16)
+    textareaRef.current.focus()
   }
   return(
     <>
-      <CalculatorTypeArea textareaValue={textareaValue} handleKeyDown={handleKeyDown} />
+      <CalculatorTypeArea textareaValue={textareaValue} handleKeyDown={handleKeyDown} textareaRef={textareaRef} />
       <CalculatorKeyboard handleButtonClick={handleButtonClick} />  
     </>
   )
