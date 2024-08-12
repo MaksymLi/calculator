@@ -1,10 +1,12 @@
 main{
   display: flex;
   justify-content: center;
+  align-content: space-between;
   flex-wrap: wrap;
-  width: 375px;
+  width: 365px;
   height: 800px;
   background-color: #1a1a1a;
+  margin: auto;
 }
 header{
   display: flex;
@@ -12,7 +14,7 @@ header{
   margin-top: 40px;
   margin-right: auto;
   margin-left: auto;
-  width: 325px;
+  width: 315px;
   height: 20px;
 }
 header>a{
@@ -20,7 +22,7 @@ header>a{
   color: #CDCDCD;
   line-height: 20px;
   font-size: 14px;
-  transition: 0.3s;
+  transition: 0.1s;
   text-decoration: underline 2px rgba(0, 0, 0, 0);
   text-underline-offset: 5px;
 }

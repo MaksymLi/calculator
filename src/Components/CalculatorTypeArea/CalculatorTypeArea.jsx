@@ -4,7 +4,7 @@ export default function CalculatorTypeArea ({ textareaValue, handleKeyDown, text
   return(
     <section className={styles.section}>
       <textarea 
-        placeholder='Type here...'
+        placeholder='0'
         className={styles.textarea} 
         value={textareaValue}
         onKeyDown={event => handleKeyDown(event.key)}

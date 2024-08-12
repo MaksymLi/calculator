@@ -1,0 +1,13 @@
+.p{
+  width: 315px;
+  letter-spacing: 1px;
+  color: #414141;
+  font-size: 16px;
+  font-weight: 200;
+  text-align: center;
+}
+.span{
+  line-height: 50px;
+  font-size: 18px;
+  font-weight: 300;
+}

@@ -9,6 +9,9 @@ export default function Calculator(){
 
   function handleKeyDown(e){
     switch(e){
+      default:
+        setTextareaValue(prev => prev + '')
+        break
       case '0':
         setTextareaValue(prev => prev + '0')
         break
@@ -134,25 +137,20 @@ export default function Calculator(){
           if(parenthesesOpen > 0){
             if(!isNaN(textareaValue[prev.length - 1]) || textareaValue[prev.length - 1] == ')'){
               setParenthesesOpen(prev => prev - 1)
-              console.log('open number or )')
               return prev + ')'
             }else{
               setParenthesesOpen(prev => prev + 1)
-              console.log('open sign')
               return prev + '('
             }
           }else{
             if(!isNaN(textareaValue[prev.length - 1])){
               setParenthesesOpen(prev => prev + 1)
-              console.log('closed number')
               return prev + '×('
             }else if(textareaValue[prev.length - 1] == ')'){
               setParenthesesOpen(prev => prev + 1)
-              console.log('closed )')
               return prev + '×('
             }else{
               setParenthesesOpen(prev => prev + 1)
-              console.log('closed sign')
               return prev + '('
             }
           }
@@ -275,6 +273,7 @@ export default function Calculator(){
     }, timeoutSec*16)
     textareaRef.current.focus()
   }
+  
   return(
     <>
       <CalculatorTypeArea textareaValue={textareaValue} handleKeyDown={handleKeyDown} textareaRef={textareaRef} />

@@ -1,0 +1,13 @@
+.section{
+  width: 60px;
+  height: 145px;
+  margin-top: 170px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+  background-color: #1a1a1a;
+}
+.section>button{
+  color: #F63356;
+}

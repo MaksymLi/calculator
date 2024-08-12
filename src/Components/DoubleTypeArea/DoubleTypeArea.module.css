@@ -1,0 +1,51 @@
+.section{
+  display: flex;
+  width: 315px;
+  height: 70px;
+  background-color: #1a1a1a;
+  box-shadow: inset 2px 2px 8px 0px rgb(0, 0, 0, 0.5);
+}
+.select, .selectFocused{
+  appearance: none;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 25px;
+  color:rgba(0, 0, 0, 0);
+  box-shadow: 2px 2px 8px 0px rgb(0, 0, 0, 0.5);
+  background-color: #1a1a1a;
+  background-image: url(/images/selectionArrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15px;
+  transition: 0.1s;
+}
+.selectFocused{
+  rotate: 90deg;
+  box-shadow: 2px -2px 8px 0px rgb(0, 0, 0, 0.5);
+}
+.select:focus, .selectFocused:focus{
+  outline: none !important;
+}
+.input{
+  width: 155px;
+  height: 40px;
+  margin: 15px 15px 15px 0;
+  background:none;
+  border: none;
+  resize: none;
+  color: #CDCDCD;
+  font-size: 25px;
+  text-align: right;
+}
+.input:focus{
+  outline: none !important;
+}
+.p{
+  width: 60px;
+  height: 40px;
+  font-size: 25px;
+  margin: 15px 15px 15px 0;
+}
