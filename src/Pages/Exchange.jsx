@@ -136,7 +136,7 @@ export default function Exchange(){
         handleChange={event => {
           textareaRef.current.focus()
           if(event.target.value === currency[0]) setCurrency([currency[1], currency[0]])
-          else setCurrency([currency[1], event.target.value])
+          else setCurrency([currency[0], event.target.value])
         }}
       />
       <DataAutor host={host}/>
