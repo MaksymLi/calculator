@@ -1,5 +1,7 @@
+import ConverterMenu from "/src/Components/ConverterMenu/ConverterMenu";
+
 export default function Converter(){
   return(
-    <h1>Converter</h1>
+    <ConverterMenu />
   )
 }

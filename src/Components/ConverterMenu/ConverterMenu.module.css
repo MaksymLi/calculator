@@ -1,0 +1,21 @@
+.section{
+  display: flex;
+  width: 320px;
+  height: 368px;
+  padding-bottom: 340px;
+  flex-wrap: wrap;
+  gap: 70px;
+}
+.section>a{
+  display: flex;
+  width: 60px;
+  height: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.section>a>p{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 16px;
+}

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styles from '/src/Components/DoubleTypeArea/DoubleTypeArea.module.css'
 
-export default function DoubleTypeArea({ inputPlaceholder, currenciesList, currenciesNames, selected, value, handleChange, handleKeyDown, textareaRef }){
-  const optionList = Array.from(currenciesNames).map(name => <option key={name} value={name}>{currenciesList[`${name}`]}</option>)
+export default function DoubleTypeArea({ inputPlaceholder, list, names, selected, value, handleChange, handleKeyDown, before, after, textareaRef }){
+  const optionList = Array.from(names).map(name => <option key={name} value={name}>{list[`${name}`]}</option>)
   const [ focused, setFocused ] = useState(false)
   return(
     <>
@@ -21,7 +21,7 @@ export default function DoubleTypeArea({ inputPlaceholder, currenciesList, curre
           {optionList}
         </select>
         <p className={styles.p}>
-          {selected}
+          {before+selected+after}
         </p>
         <input 
           ref={textareaRef}

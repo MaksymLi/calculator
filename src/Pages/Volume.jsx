@@ -1,43 +1,58 @@
 import { useEffect, useState, useRef } from 'react'
 import OtherKeyboard from "/src/Components/OtherKeyboard/OtherKeyboard"
 import DoubleTypeArea from "/src/Components/DoubleTypeArea/DoubleTypeArea"
-import DataAutor from "/src/Components/DataAutor/DataAutor"
 
-export default function Exchange(){
-  const host = 'api.frankfurter.app'
-  const [ data, setData ] = useState()
-  const [ list, setList ] = useState('')
-  const [ names, setNames ] = useState('')  
+export default function Volume(){
+  const data = {
+    cm: 1000000,
+    mi: 0.000000000239913,
+    ft: 35.3147,
+    in: 61023.7,
+    bbls: 6.28981,
+    gal: 264.172,
+    pt: 1759.75,
+    qt: 1056.69,
+    bsh: 28.377593258402,
+    l: 1000,
+    oz: 33814
+  }
+  const list = {
+    m: 'Cubic Meter',
+    cm: 'Cubic Centimetre',
+    mi: 'Cubic Mile',
+    ft: 'Cubic Feet',
+    in: 'Cubic Inch',
+    bbls: 'Barrel',
+    gal: 'Gallon',
+    pt: 'Pint',
+    qt: 'Quart',
+    bsh: 'Bushel',
+    l: 'Liter',
+    oz: 'Ounce'
+  }
+  const names = [
+    'm',
+    'cm',
+    'mi',
+    'ft',
+    'in',
+    'bbls',
+    'gal',
+    'pt',
+    'qt',
+    'bsh',
+    'l',
+    'oz'
+  ]
   const [ amount, setAmount ] = useState(['1', '1'])
-  const [ unit, setUnit ] = useState(['USD', 'PLN'])
+  const [ unit, setUnit ] = useState([`m`, 'l'])
   const textareaRef = useRef()
 
   useEffect(() => {
-    textareaRef.current.focus()
-    fetch(`https://${host}/currencies`)
-      .then(resp => resp.json())
-      .then(data => {
-        setList(data)
-        setNames(Object.getOwnPropertyNames(data))
-      })
-    fetch(`https://${host}/latest`)
-      .then(resp => resp.json())
-      .then(result => {
-        setData(result)
-        setAmount([ 
-          amount[0], 
-          Math.round(
-            amount[0] * ( (1 / (unit[0] == 'EUR' ? 1 : result.rates[`${unit[0]}`])) / (1 / (unit[1] == 'EUR' ? 1 : result.rates[`${unit[1]}`])) * 1000)) / 1000
-        ])
-      })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  
-  useEffect(() => {
-    if (data != undefined) setAmount([ 
-      amount[0], 
+    setAmount([ 
+      amount[0],
       Math.round(
-        amount[0] * ( (1 / (unit[0] == 'EUR' ? 1 : data.rates[`${unit[0]}`])) / (1 / (unit[1] == 'EUR' ? 1 : data.rates[`${unit[1]}`])) * 10000)) / 10000
+        amount[0] * ( (1 / (unit[0] == 'm' ? 1 : data[`${unit[0]}`])) / (1 / (unit[1] == 'm' ? 1 : data[`${unit[1]}`])) * 10000)) / 10000
     ])
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amount[0], unit])
@@ -110,7 +125,6 @@ export default function Exchange(){
     setAmount(prev => [handleClick(buttonId, prev[0]), amount[1]])
     textareaRef.current.focus()
   }
-
   return(
     <>
       <DoubleTypeArea 
@@ -126,7 +140,7 @@ export default function Exchange(){
         handleKeyDown={event => setAmount(prev => [handleKeyDown(event.key, prev[0]), amount[1]])}
         textareaRef={textareaRef}
         before=''
-        after=''
+        after={unit[0] === 'cm' || unit[0] === 'm' || unit[0] === 'in' || unit[0] === 'ft' || unit[0] === 'mi' ? '³' : ''}
       />
       <DoubleTypeArea 
         inputPlaceholder='0'
@@ -139,9 +153,8 @@ export default function Exchange(){
           else setUnit([unit[0], event.target.value])
         }}
         before=''
-        after=''
+        after={unit[1] === 'cm' || unit[1] === 'm' || unit[1] === 'in' || unit[1] === 'ft' || unit[1] === 'mi' ? '³' : ''}
       />
-      <DataAutor host={host}/>
       <OtherKeyboard handleButtonClick={handleButtonClick} />
     </>
   )

@@ -12,7 +12,6 @@ export default function Layout(){
         </header> 
         <Outlet />
       </main>
-      
     </>
   )
 }

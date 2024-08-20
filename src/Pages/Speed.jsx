@@ -1,43 +1,43 @@
 import { useEffect, useState, useRef } from 'react'
 import OtherKeyboard from "/src/Components/OtherKeyboard/OtherKeyboard"
 import DoubleTypeArea from "/src/Components/DoubleTypeArea/DoubleTypeArea"
-import DataAutor from "/src/Components/DataAutor/DataAutor"
 
-export default function Exchange(){
-  const host = 'api.frankfurter.app'
-  const [ data, setData ] = useState()
-  const [ list, setList ] = useState('')
-  const [ names, setNames ] = useState('')  
+export default function Speed(){
+  const data = {
+    km: 3.6,
+    mph: 2.237,
+    yps: 1.0936,
+    ft: 3.2809,
+    ips: 39.3701,
+    kn: 1.9439
+  }
+  const list = {
+    m: 'Metre per Second',
+    km: 'Kilometre per Hour',
+    mph: 'Mile per Hour',
+    yps: 'Yard per Second',
+    ft: 'Feet per Second',
+    ips: 'Inch per Second',
+    kn: 'Knot'
+  }
+  const names = [
+    'm',
+    'km',
+    'mph',
+    'yps',
+    'ft',
+    'ips',
+    'kn'
+  ]
   const [ amount, setAmount ] = useState(['1', '1'])
-  const [ unit, setUnit ] = useState(['USD', 'PLN'])
+  const [ unit, setUnit ] = useState([`m`, 'ft'])
   const textareaRef = useRef()
 
   useEffect(() => {
-    textareaRef.current.focus()
-    fetch(`https://${host}/currencies`)
-      .then(resp => resp.json())
-      .then(data => {
-        setList(data)
-        setNames(Object.getOwnPropertyNames(data))
-      })
-    fetch(`https://${host}/latest`)
-      .then(resp => resp.json())
-      .then(result => {
-        setData(result)
-        setAmount([ 
-          amount[0], 
-          Math.round(
-            amount[0] * ( (1 / (unit[0] == 'EUR' ? 1 : result.rates[`${unit[0]}`])) / (1 / (unit[1] == 'EUR' ? 1 : result.rates[`${unit[1]}`])) * 1000)) / 1000
-        ])
-      })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  
-  useEffect(() => {
-    if (data != undefined) setAmount([ 
-      amount[0], 
+    setAmount([ 
+      amount[0],
       Math.round(
-        amount[0] * ( (1 / (unit[0] == 'EUR' ? 1 : data.rates[`${unit[0]}`])) / (1 / (unit[1] == 'EUR' ? 1 : data.rates[`${unit[1]}`])) * 10000)) / 10000
+        amount[0] * ( (1 / (unit[0] == 'm' ? 1 : data[`${unit[0]}`])) / (1 / (unit[1] == 'm' ? 1 : data[`${unit[1]}`])) * 10000)) / 10000
     ])
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amount[0], unit])
@@ -110,7 +110,6 @@ export default function Exchange(){
     setAmount(prev => [handleClick(buttonId, prev[0]), amount[1]])
     textareaRef.current.focus()
   }
-
   return(
     <>
       <DoubleTypeArea 
@@ -126,7 +125,7 @@ export default function Exchange(){
         handleKeyDown={event => setAmount(prev => [handleKeyDown(event.key, prev[0]), amount[1]])}
         textareaRef={textareaRef}
         before=''
-        after=''
+        after={unit[0] === 'm' || unit[0] === 'ft' ? '/s' : unit[0] === 'km' ? '/h' : ''}
       />
       <DoubleTypeArea 
         inputPlaceholder='0'
@@ -139,9 +138,8 @@ export default function Exchange(){
           else setUnit([unit[0], event.target.value])
         }}
         before=''
-        after=''
+        after={unit[1] === 'm' || unit[1] === 'ft' ? '/s' : unit[1] === 'km' ? '/h' : ''}
       />
-      <DataAutor host={host}/>
       <OtherKeyboard handleButtonClick={handleButtonClick} />
     </>
   )
