@@ -6,9 +6,9 @@ export default function Layout(){
     <>
       <main>
         <header>
-          <NavLink to="/">Calculator</NavLink>
-          <NavLink to="/exchange">Exchange Rate</NavLink>
-          <NavLink to="/converter">Unit Converter</NavLink>
+          <NavLink to="/calculator">Calculator</NavLink>
+          <NavLink to="/calculator/exchange">Exchange Rate</NavLink>
+          <NavLink to="/calculator/converter">Unit Converter</NavLink>
         </header> 
         <Outlet />
       </main>
