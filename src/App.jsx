@@ -16,17 +16,17 @@ export default function App() {
   return (
     <>   
       <Routes>
-        <Route path='/' element={<Layout />} >
+        <Route path='/calculator' element={<Layout />} >
           <Route index element={<Calculator />} />
-          <Route path='/exchange' element={<Exchange />} />
-          <Route path='/converter' element={<Converter />} />
-          <Route path='/converter/length' element={<Length />} />
-          <Route path='/converter/area' element={<Area />} />
-          <Route path='/converter/volume' element={<Volume />} />
-          <Route path='/converter/speed' element={<Speed />} />
-          <Route path='/converter/weight' element={<Weight />} />
-          <Route path='/converter/data' element={<Data />} />
-          <Route path='/converter/pressure' element={<Pressure />} />
+          <Route path='/calculator/exchange' element={<Exchange />} />
+          <Route path='/calculator/converter' element={<Converter />} />
+          <Route path='/calculator/converter/length' element={<Length />} />
+          <Route path='/calculator/converter/area' element={<Area />} />
+          <Route path='/calculator/converter/volume' element={<Volume />} />
+          <Route path='/calculator/converter/speed' element={<Speed />} />
+          <Route path='/calculator/converter/weight' element={<Weight />} />
+          <Route path='/calculator/converter/data' element={<Data />} />
+          <Route path='/calculator/converter/pressure' element={<Pressure />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
