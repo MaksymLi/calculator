@@ -13,11 +13,11 @@ export default function CalculatorKeyboardTop({ handleButtonClick }){
     },
     {
       id: 'backspace',
-      content: '/public/images/backspace.svg'
+      content: `${import.meta.env.BASE_URL}/images/backspace.svg`
     }
   ]
   const ulbuttons = buttons.map(button => <Button key={button.id} buttonId={button.id} handleButtonClick={handleButtonClick}>
-    {button.id !== 'backspace' ? button.content : <img src='/images/backspace.svg' />}
+    {button.id !== 'backspace' ? button.content : <img src={button.content} />}
   </Button>)
 
   return(

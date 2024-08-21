@@ -9,7 +9,7 @@ export default function OtherKeyboardRigth({ handleButtonClick }){
     },
     {
       id: 'backspace',
-      content: '/images/backspaceRed.svg'
+      content: `${import.meta.env.BASE_URL}/images/backspaceRed.svg`
     }
   ]
 

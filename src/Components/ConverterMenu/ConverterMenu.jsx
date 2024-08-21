@@ -6,31 +6,31 @@ export default function ConverterMenu(){
   const buttons = [
     {
       id: 'Length',
-      content: '/images/length.svg'
+      content: `${import.meta.env.BASE_URL}/images/length.svg`
     },
     {
       id: 'Area',
-      content: '/images/area.svg'
+      content: `${import.meta.env.BASE_URL}/images/area.svg`
     },
     {
       id: 'Volume',
-      content: '/images/volume.svg'
+      content: `${import.meta.env.BASE_URL}/images/volume.svg`
     },
     {
       id: 'Speed',
-      content: '/images/speed.svg'
+      content: `${import.meta.env.BASE_URL}/images/speed.svg`
     },
     {
       id: 'Weight',
-      content: '/images/weight.svg'
+      content: `${import.meta.env.BASE_URL}/images/weight.svg`
     },
     {
       id: 'Data',
-      content: '/images/data.svg'
+      content: `${import.meta.env.BASE_URL}/images/data.svg`
     },
     {
       id: 'Pressure',
-      content: '/images/pressure.svg'
+      content: `${import.meta.env.BASE_URL}/images/pressure.svg`
     }
   ]
 

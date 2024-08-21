@@ -11,4 +11,5 @@
   background-color: #1a1a1a;
   text-align: center;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

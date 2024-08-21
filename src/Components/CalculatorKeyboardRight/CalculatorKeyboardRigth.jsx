@@ -5,23 +5,23 @@ export default function CalculatorKeyboardRight({ handleButtonClick }){
   const buttons = [
     {
       id: '/',
-      content: '/images/divide.svg'
+      content: `${import.meta.env.BASE_URL}/images/divide.svg`
     },
     {
       id: '*',
-      content: '/images/times.svg'
+      content: `${import.meta.env.BASE_URL}/images/times.svg`
     },
     {
       id: '-',
-      content: '/images/minus.svg'
+      content: `${import.meta.env.BASE_URL}/images/minus.svg`
     },
     {
       id: '+',
-      content: '/images/plus.svg'
+      content: `${import.meta.env.BASE_URL}/images/plus.svg`
     },
     {
       id: '=',
-      content: '/images/equals.svg'
+      content: `${import.meta.env.BASE_URL}/images/equals.svg`
     }
   ]
   const ulbuttons = buttons.map(button => <Button key={button.id} buttonId={button.id} handleButtonClick={handleButtonClick}><img src={button.content} /></Button>)
